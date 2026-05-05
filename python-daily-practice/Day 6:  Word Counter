@@ -1,0 +1,11 @@
+sentence = input("Enter a sentence: ")
+
+# Count words
+words = sentence.split()
+word_count = len(words)
+
+# Count characters (excluding spaces)
+char_count = len(sentence.replace(" ", ""))
+
+print("Number of words:", word_count)
+print("Number of characters (without spaces):", char_count)
