@@ -1,0 +1,14 @@
+
+
+import random
+
+while True:
+    roll = random.randint(1, 6)
+    
+    print("You rolled:", roll)
+
+    again = input("Roll again? (yes/no): ").lower()
+
+    if again != "yes":
+        print("Game ended")
+        break
