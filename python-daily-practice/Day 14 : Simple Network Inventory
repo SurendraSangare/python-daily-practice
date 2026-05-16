@@ -1,0 +1,20 @@
+class NetworkDevice:
+    def __init__(self, hostname, ip_address, uptime):
+        self.hostname = hostname
+        self.ip_address = ip_address
+        self.uptime = uptime
+
+    def device_info(self):
+        print(f"Device Name: {self.hostname}")
+        print(f"IP Address: {self.ip_address}")
+        print(f"Uptime: {self.uptime} days")
+        print("-" * 40)
+
+
+# Creating network device objects
+router = NetworkDevice("Core-Router", "192.168.1.1", 120)
+switch = NetworkDevice("Access-Switch", "192.168.1.2", 75)
+
+# Displaying device information
+router.device_info()
+switch.device_info()
