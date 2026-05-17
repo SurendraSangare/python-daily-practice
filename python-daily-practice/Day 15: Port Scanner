@@ -1,0 +1,35 @@
+import socket
+
+target = input("Enter target IP or website: ")
+
+print(f"\nScanning common ports on {target}...\n")
+
+common_ports = {
+    21: "FTP",
+    22: "SSH",
+    23: "Telnet",
+    25: "SMTP",
+    53: "DNS",
+    80: "HTTP",
+    110: "POP3",
+    135: "RPC",
+    139: "NetBIOS",
+    143: "IMAP",
+    443: "HTTPS",
+    445: "SMB"
+}
+
+for port, service in common_ports.items():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(1)
+
+    result = sock.connect_ex((target, port))
+
+    if result == 0:
+        print(f"[OPEN] Port {port} - {service}")
+    else:
+        print(f"[CLOSED] Port {port}")
+
+    sock.close()
+
+print("\nScan completed.")
