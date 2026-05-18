@@ -1,0 +1,14 @@
+
+
+import socket
+
+website = input("Enter website name: ")
+
+try:
+    ip = socket.gethostbyname(website)
+
+    print("\nWebsite :", website)
+    print("IP Address :", ip)
+
+except socket.gaierror:
+    print("Invalid website name")
