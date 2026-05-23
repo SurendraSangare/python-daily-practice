@@ -1,0 +1,33 @@
+import subprocess
+import platform
+import time
+
+def ping_host(host):
+    param = "-n" if platform.system().lower() == "windows" else "-c"
+
+    command = ["ping", param, "1", host]
+
+    try:
+        output = subprocess.check_output(command).decode()
+
+        if "TTL=" in output or "ttl=" in output:
+            print(f"[+] {host} is UP")
+        else:
+            print(f"[-] {host} is DOWN")
+
+    except:
+        print(f"[!] Could not reach {host}")
+
+
+print("=== Network Latency Checker ===")
+
+hosts = ["8.8.8.8", "google.com", "github.com"]
+
+while True:
+    print("\nChecking connectivity...\n")
+
+    for host in hosts:
+        ping_host(host)
+
+    print("\nWaiting 10 seconds for next scan...")
+    time.sleep(10)
