@@ -1,0 +1,11 @@
+failed_logins = 0
+
+with open("sample_log.txt", "r") as file:
+    logs = file.readlines()
+
+for line in logs:
+    if "FAILED LOGIN" in line:
+        failed_logins += 1
+        print(line.strip())
+
+print(f"\nTotal Failed Login Attempts: {failed_logins}")
