@@ -1,0 +1,28 @@
+
+
+login_attempts = [
+    ("admin", "failed"),
+    ("admin", "failed"),
+    ("admin", "failed"),
+    ("surendra", "success"),
+    ("admin", "failed"),
+]
+
+failed_attempts = {}
+
+for user, status in login_attempts:
+
+    if status == "failed":
+        if user in failed_attempts:
+            failed_attempts[user] += 1
+        else:
+            failed_attempts[user] = 1
+
+# Detect suspicious activity
+print("===== Brute Force Detection Report =====")
+
+for user, count in failed_attempts.items():
+    print(f"{user} -> {count} failed attempts")
+
+    if count >= 3:
+        print(f"ALERT: Possible brute force attack detected on '{user}' account!")
