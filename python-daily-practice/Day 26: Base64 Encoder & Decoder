@@ -1,0 +1,19 @@
+import base64
+
+print("1. Encode")
+print("2. Decode")
+
+choice = input("Choose an option (1/2): ")
+
+if choice == "1":
+    text = input("Enter text to encode: ")
+    encoded = base64.b64encode(text.encode())
+    print("Encoded:", encoded.decode())
+
+elif choice == "2":
+    text = input("Enter Base64 text: ")
+    decoded = base64.b64decode(text.encode())
+    print("Decoded:", decoded.decode())
+
+else:
+    print("Invalid choice.")
