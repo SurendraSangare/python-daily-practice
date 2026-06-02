@@ -1,0 +1,16 @@
+import hashlib
+
+filename = input("Enter file path: ")
+
+try:
+    with open(filename, "rb") as file:
+        data = file.read()
+
+    md5_hash = hashlib.md5(data).hexdigest()
+    sha256_hash = hashlib.sha256(data).hexdigest()
+
+    print("\nMD5:", md5_hash)
+    print("SHA256:", sha256_hash)
+
+except FileNotFoundError:
+    print("File not found.")
