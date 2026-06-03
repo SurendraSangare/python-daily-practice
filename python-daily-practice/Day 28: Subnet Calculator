@@ -1,0 +1,15 @@
+import ipaddress
+
+ip = input("Enter IP Address with CIDR (e.g., 192.168.1.10/24): ")
+
+try:
+    network = ipaddress.ip_network(ip, strict=False)
+
+    print("\nNetwork Address :", network.network_address)
+    print("Broadcast Address:", network.broadcast_address)
+    print("Total Hosts      :", network.num_addresses)
+    print("Usable Hosts     :", max(network.num_addresses - 2, 0))
+    print("Subnet Mask      :", network.netmask)
+
+except ValueError:
+    print("Invalid IP address or CIDR notation.")
